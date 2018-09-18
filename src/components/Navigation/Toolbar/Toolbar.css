@@ -7,7 +7,7 @@
     background-color: #703B09;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     padding: 0 20px;
     box-sizing: border-box;
     z-index: 90;
@@ -19,6 +19,19 @@
 
 .Logo {
     height: 80%;
+}
+
+/* FOR MOBILE */
+/* @media (max-width: 499px) {
+    .Toolbar {
+        display: none;
+    }
+} */
+
+@media (max-width: 499px) {
+    .DesktopOnly {
+        display: none;
+    }
 }
 
 
