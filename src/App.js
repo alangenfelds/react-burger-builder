@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 
-import Layout from './components/Layout/Layout';
+import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 
 class App extends Component {
   render() {
 
     //--------------------------------- Higher-order Functions-----------------------------------------------------------
-var triple = (x) => (console.log('triple(' + x + ') = ', 3 * x));
-triple(10);
+// var triple = (x) => (console.log('triple(' + x + ') = ', 3 * x));
+// triple(10);
 
-var animals = [
-  {name: 'Fluffykins', species: 'rabbit'},
-  {name: 'Caro', species: 'dog'},
-  {name: 'Hamilton', species: 'dog'},
-  {name: 'Harold', species: 'fish'},
-  {name: 'Ursula', species: 'cat'},
-  {name: 'Jimmy', species: 'fish'}
-]
+// var animals = [
+//   {name: 'Fluffykins', species: 'rabbit'},
+//   {name: 'Caro', species: 'dog'},
+//   {name: 'Hamilton', species: 'dog'},
+//   {name: 'Harold', species: 'fish'},
+//   {name: 'Ursula', species: 'cat'},
+//   {name: 'Jimmy', species: 'fish'}
+// ]
 
 // 1. Filter
 
@@ -32,13 +32,14 @@ var animals = [
 // });
 
 // var dogs = animals.filter( (animal) => animal.species === 'dog');
-var isDog = (animal) => animal.species === 'dog';
-var isNotDog = (animal) => animal.species !== 'dog';
-var dogs = animals.filter( isDog );
-var otherAnimals = animals.filter( isNotDog );
 
-console.log('dogs', dogs);
-console.log('otherAnimals', otherAnimals);
+// var isDog = (animal) => animal.species === 'dog';
+// var isNotDog = (animal) => animal.species !== 'dog';
+// var dogs = animals.filter( isDog );
+// var otherAnimals = animals.filter( isNotDog );
+
+// console.log('dogs', dogs);
+// console.log('otherAnimals', otherAnimals);
 
 // 2. MAP
 
@@ -47,9 +48,9 @@ console.log('otherAnimals', otherAnimals);
 //       names.push(animals[i].name)
 // }
 
-var names = animals.map( (animal) => animal.name )
+// var names = animals.map( (animal) => animal.name )
 
-console.log('names', names);
+// console.log('names', names);
 
     //-----------------------------------------------------------------------------------------------------------------
 
