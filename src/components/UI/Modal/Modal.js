@@ -8,7 +8,7 @@ class Modal extends Component {
 
 shouldComponentUpdate(nextProps, nextState) {
     // console.log('[Modal] nextProps.show = ' + nextProps.show);
-    if (nextProps.show !== this.props.show) {
+    if (nextProps.show !== this.props.show || nextProps.children !== this.props.children) {
         return true;
     }
     return false;
@@ -21,7 +21,7 @@ componentWillUpdate() {
     render() {
         return (
             <Aux>
-                <Backdrop show={this.props.show} backdropClicked={this.props.modalClosed} />
+                <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
                 <div 
                     className={classes.Modal} 
                     style={{

@@ -52,6 +52,11 @@ class App extends Component {
 
 // console.log('names', names);
 
+// create 15 empty object in JS way
+// var defaultExpanded=[...Array(15)].map( () => ({}) ) ;
+// console.log(defaultExpanded);
+
+
     //-----------------------------------------------------------------------------------------------------------------
 
     return (
