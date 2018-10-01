@@ -4,6 +4,18 @@ import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 
 class App extends Component {
+
+  state = {
+    show: true
+  }
+
+  // just for testing - hide component after 5 seconds
+  // componentDidMount() {
+  //   setTimeout(() => {
+  //     this.setState({show: false})
+  //   }, 5000);
+  // }
+
   render() {
 
     //--------------------------------- Higher-order Functions-----------------------------------------------------------
@@ -62,7 +74,7 @@ class App extends Component {
     return (
       <div>
         <Layout>
-          <BurgerBuilder />
+          {this.state.show ? <BurgerBuilder /> : null}
         </Layout>
       </div>
     );
