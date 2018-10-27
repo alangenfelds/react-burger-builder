@@ -29,7 +29,7 @@ const burger = ( props ) => {
 
     // ----------------------REDUCE TRAINING ---------------------
 
-    console.log(props);
+    // console.log(props);
 
     //getting array of ingredients object keys
     let transformedIngredients = Object.keys( props.ingredients )
