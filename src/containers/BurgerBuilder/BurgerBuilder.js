@@ -15,7 +15,7 @@ import * as actions from '../../store/actions';
 
 
 
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
   state = {
     purchasing: false,
     // loading: false,
@@ -24,20 +24,6 @@ class BurgerBuilder extends Component {
 
   componentDidMount() {
     this.props.onInitIngredients();
-    // console.log(this.props);
-    // axios
-    //   .get("https://react-my-burger-2471f.firebaseio.com/ingredients.json")
-    //   .then(res => {
-    //     this.setState({
-    //       ingredients: res.data
-    //     });
-    //   })
-    //   .catch(err => {
-    //     // console.log(err);
-    //     this.setState({
-    //       error: true
-    //     });
-    //   });
   }
 
   purchaseHandler = () => {
