@@ -101,39 +101,20 @@ class ContactData extends Component {
   orderHandler = event => {
     event.preventDefault();
     console.log(this.props.ings);
-
-    // this.setState({ loading: true });
-
     const formData = {};
 
     for (let key in this.state.orderForm) {
         formData[key] = this.state.orderForm[key].value
     }
 
-
     const order = {
       ingredients: this.props.ings,
       price: this.props.totalPrice.toFixed(2),
-      orderData: formData
+      orderData: formData,
+      userId: this.props.userId
     };
 
     this.props.onOrderBurger(order, this.props.token);
-
-    // axios
-    //   .post("/orders.json", order)
-    //   .then(response => {
-    //     console.log(response);
-    //     this.setState({
-    //       loading: false
-    //     });
-    //     this.props.history.push("/");
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //     this.setState({
-    //       loading: false
-    //     });
-    //   });
   };
 
   checkValidity(value, rules) {
@@ -237,7 +218,8 @@ const mapStateToProps = state => {
     ings: state.burgerBuilder.ingredients,
     totalPrice: state.burgerBuilder.totalPrice,
     loading: state.order.loading,
-    token: state.auth.token
+    token: state.auth.token,
+    userId: state.auth.userId
   }
 }
 
