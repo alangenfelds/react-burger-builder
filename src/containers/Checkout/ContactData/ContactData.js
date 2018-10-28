@@ -8,6 +8,7 @@ import axios from "../../../axios-orders";
 import Input from "../../../components/UI/Input/Input";
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../../store/actions';
+import { updateObject, checkValidity } from '../../../shared/utility';
 
 class ContactData extends Component {
   state = {
@@ -79,7 +80,8 @@ class ContactData extends Component {
         value: "",
         valueType: "E-Mail address",
         validation: {
-            required: true
+            required: true,
+            isEmail: true
         },
         valid: false,
         touched: false
@@ -100,7 +102,7 @@ class ContactData extends Component {
 
   orderHandler = event => {
     event.preventDefault();
-    console.log(this.props.ings);
+    // console.log(this.props.ings);
     const formData = {};
 
     for (let key in this.state.orderForm) {
@@ -117,43 +119,34 @@ class ContactData extends Component {
     this.props.onOrderBurger(order, this.props.token);
   };
 
-  checkValidity(value, rules) {
-    let isValid = true;
-    
-    if (!rules) return true;
-
-    if (rules.required) {
-      isValid = value.trim() !== '' && isValid;
-    }
-
-    if (rules.minLength) {
-      isValid = value.length >= rules.minLength && isValid;
-    }
-
-    if (rules.maxLength) {
-      isValid = value.length <= rules.maxLength && isValid;
-    }
-
-    return isValid;
-  }
-
   inputChangedHandler = (event, inputIdentifier) => {
-    // console.log(inputIdentifier + ":" + event.target.value);
 
-    const updatedOrderForm = {
-        ...this.state.orderForm
-    }
+    // const updatedOrderForm = {
+    //     ...this.state.orderForm
+    // }
 
-    const updatedFormElement = { ...updatedOrderForm[inputIdentifier] };
+    // const updatedFormElement = { ...updatedOrderForm[inputIdentifier] };
 
-    updatedFormElement.value = event.target.value;
+    // updatedFormElement.value = event.target.value;
     
-    updatedFormElement.touched = true;
+    // updatedFormElement.touched = true;
 
-    updatedFormElement.valid = 
-      this.checkValidity(updatedFormElement.value,updatedFormElement.validation)
+    // updatedFormElement.valid = 
+    //   this.checkValidity(updatedFormElement.value,updatedFormElement.validation)
+
+    const updatedFormElement = updateObject(this.state.orderForm[inputIdentifier], {
+      value : event.target.value,
+      touched : true,
+      valid : checkValidity(event.target.value,this.state.orderForm[inputIdentifier].validation)
+    });
+
+    const updatedOrderForm = updateObject(this.state.orderForm, {
+      [inputIdentifier]: updatedFormElement
+    });
 
     updatedOrderForm[inputIdentifier] = updatedFormElement;
+
+    
     
     let formIsValid = true;
     for (let key in updatedOrderForm) {
